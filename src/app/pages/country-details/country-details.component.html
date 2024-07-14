@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <!-- Displaying country name -->
+      <h2>{{ country.name }}</h2>
+      
+      <!-- Displaying population -->
+      <p>Population: {{ country.population }}</p>
+      
+      <!-- Displaying area -->
+      <p>Superficie: {{ country.area }}</p>
+      
+      <!-- Displaying continent -->
+      <p>Continent: {{ country.continent }}</p>
+      
+      <!-- Displaying GDP -->
+      <p>Produit intérieur brut: {{ country.gdp }}</p>
+    </div>
+    <div class="col-md-4">
+      <!-- Displaying country image with safe URL -->
+      <img [src]="getSafeImageUrl(country.image)" alt="{{ country.name }}" class="img-fluid zoomable-image">
+    </div>
+  </div>
+  
+  <!-- Button to navigate back -->
+  <button class="btn btn-primary mt-3" (click)="goBack()">Retour</button>
+</div>

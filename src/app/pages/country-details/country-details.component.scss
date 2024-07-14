@@ -1,0 +1,11 @@
+.zoomable-image {
+    max-width: 100%; /* Ensure image doesn't exceed its container */
+    max-height: 100%; /* Limit image height to maintain aspect ratio */
+    width: 100%; /* Allow image to scale with container */
+    height: 100%; /* Allow image to scale with container */
+    transition: transform 0.3s ease; /* Smooth transition */
+  }
+  
+  .zoomable-image:hover {
+    transform: scale(1.2); /* Zoom in effect on hover */
+  }

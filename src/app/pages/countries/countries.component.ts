@@ -4,7 +4,7 @@ import { CountryService } from '../../core/Service/Country.service';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router';;
 import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Country } from '@app/core/models/Country ';
@@ -123,6 +123,21 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
    * Exports the current table data to a CSV file for download.
    */
   exportToCSV(): void {
+    const csvData = this.countries.map(country => ({
+      name: country.name,
+      population: country.population,
+      area: country.area,
+      continent: country.continent,
+      gdp: country.gdp,
+      image: country.image
+    }));
+    const csvString = this.convertToCSV(csvData);
+    const blob = new Blob([csvString], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'countries.csv');
+    a.click();
   }
 
   /**
@@ -132,7 +147,8 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
    * @returns {string} - The CSV-formatted string.
    */
   convertToCSV(objArray: any[]): string {
-    return ""
+    const array = [Object.keys(objArray[0])].concat(objArray);
+    return array.map(it => Object.values(it).toString()).join('\n');
   }
 
   /**
@@ -143,25 +159,15 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
    * @param {Event} event - The event that triggered the click.
    */
   viewDetails(country: Country, event: Event): void {
+    const targetElement = event.target as HTMLElement;
+    const isEditIcon = targetElement.classList.contains('mat-icon') && targetElement.textContent === 'edit';
 
+    if (!isEditIcon) {
+      this.router.navigate(['/country-details', country.name]);
+    }
   }
 
-  /**
-   * Opens a dialog to add a new country.
-   * Updates table and local storage after successful addition.
-   */
-  addCountry(): void {
-  }
-
-  /**
-   * Opens a dialog to edit an existing country.
-   * Updates table and local storage after successful edit.
-   * 
-   * @param {Country} country - The country object to edit.
-   */
-  editCountry(country: any): void {
  
-  }
 
   /**
    * Deletes all countries from local storage and table data.
@@ -170,7 +176,7 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
   deleteAll(): void {
     localStorage.removeItem(this.localStorageKey);
     this.countries = []; // Clear local data array
-    this.dataSource.data = []// Update MatTableDataSource with empty data
+    this.dataSource.data = this.countries; // Update MatTableDataSource with empty data
     localStorage.setItem(this.localStorageKey, this.countries.toString());
   }
 
@@ -184,4 +190,22 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
       this.dataSource.data = this.countries; // Update MatTableDataSource with empty data
     });
   }
+   /**
+   * Opens a dialog to add a new country.
+   * Updates table and local storage after successful addition.
+   */
+   addCountry(): void {
+
+   }
+ 
+   /**
+    * Opens a dialog to edit an existing country.
+    * Updates table and local storage after successful edit.
+    * 
+    * @param {Country} country - The country object to edit.
+    */
+   editCountry(country: any): void {
+ 
+   }
 }
+

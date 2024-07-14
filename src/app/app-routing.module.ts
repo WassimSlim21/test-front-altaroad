@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router'; // Import Angular router
 // Define routes for lazy loading modules
 const routes: Routes = [
   { path: 'countries', loadChildren: () => import('./pages/countries/countries.module').then(m => m.CountriesModule) }, // Lazy load CountriesModule for path '/countries'
+  { path: 'country-details/:id', loadChildren: () => import('./pages/country-details/country-details.module').then(m => m.CountryDetailsModule) }, // Lazy load CountryDetailsModule for path '/country-details/:id'
   { path: '', redirectTo: 'countries', pathMatch: 'full' }, // Redirect empty path to '/countries'
   { path: '**', redirectTo: 'countries' } // Redirect any other unknown routes to '/countries'
 ];

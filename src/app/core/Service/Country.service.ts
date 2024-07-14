@@ -57,5 +57,14 @@ export class CountryService {
       localStorage.setItem(this.localStorageKey, JSON.stringify(this.countries)); // Stringify and store countries data
     }
 
+     /**
+   * Retrieves a specific country by its name.
+   * @param name The name of the country to retrieve.
+   * @returns The Country object matching the provided name, or undefined if not found.
+   */
+  getCountry(name: string): Country | undefined {
+    return this.countries.find(country => country.name === name);
+  }
+
   
 }
