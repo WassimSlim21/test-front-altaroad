@@ -1,0 +1,46 @@
+.zoomable-image {
+    max-width: 100%; /* Ensure image doesn't exceed its container */
+    max-height: 200px; /* Limit image height to maintain aspect ratio */
+    width: auto; /* Allow image to scale with container */
+    height: auto; /* Allow image to scale with container */
+    transition: transform 0.3s ease; /* Smooth transition */
+  }
+  
+  .zoomable-image:hover {
+    transform: scale(1.2); /* Zoom in effect on hover */
+  }
+  
+  .table-container {
+    overflow-x: auto; /* Enable horizontal scrolling for small screens */
+  }
+  
+  table {
+    width: 100%; /* Make sure the table fills its container */
+    table-layout: fixed; /* Prevent the table from changing width based on content */
+  }
+  
+  /* Optional: Adjust padding or margins as needed */
+  .body-container {
+    margin-top: 1px;
+    box-sizing: border-box;
+    border: 4px solid green;
+    padding: 10px; /* Add padding for spacing */
+  }
+  
+  
+  .mat-header-cell {
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  .mat-cell {
+    padding: 10px;
+  }
+  
+  .mat-sort-header {
+    cursor: pointer;
+    font-weight: bold;
+  
+  }
+  
+  

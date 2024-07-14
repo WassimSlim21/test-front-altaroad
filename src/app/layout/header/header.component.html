@@ -1,0 +1,43 @@
+  
+  <!-- Approach with mat-toolbar it works but I'm getting an error '
+  MatToolbar: Attempting to combine different toolbar modes. Either specify multiple `<mat-toolbar-row>` 
+    elements explicitly or just place content inside of a `<mat-toolbar>` for a single row
+
+      After mading some search I think it's because of the div header-title and the div with class header-toolbar  '
+  -->
+  <!-- <mat-toolbar color="primary" class="header-toolbar">
+    <div class="header-title">
+      Gestion des pays
+    </div>
+    <div class="header-actions">
+        <mat-toolbar-row>
+          <mat-form-field appearance="fill" class="search-input">
+            <mat-label>Recherche</mat-label>
+            <input matInput type="text" placeholder="Recherche" [(ngModel)]="searchInput" (input)="onInputChange($event)">
+          </mat-form-field>
+          <button mat-stroked-button id="csvexp-btn" (click)="export()">Exporter en CSV</button>
+        </mat-toolbar-row>
+      <mat-toolbar-row>
+          <button mat-stroked-button id="ajout-btn" (click)="add()">Ajouter</button>
+        </mat-toolbar-row>  
+    </div>
+  </mat-toolbar> -->
+<!-- Using bootstrap approach -->
+ <div class="header-toolbar">
+  <div class="header-title mb-5">
+    Gestion des pays
+  </div>
+  <div class="header-actions">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group search-input">
+          <input type="text" class="form-control" id="searchInput" placeholder="Recherche" [(ngModel)]="searchInput" (input)="onInputChange($event)">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-outline-primary font-weight-bold bold-black-text" (click)="export()">Exporter en CSV</button>
+        <button class="btn btn-outline-primary font-weight-bold bold-black-text mt-2" (click)="add()">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>

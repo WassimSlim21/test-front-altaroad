@@ -1,0 +1,82 @@
+[  
+  {
+  "name": "Tunisie",
+  "population": 11722038,
+  "area": 163610,
+  "continent": "Africa",
+  "gdp": 3339,
+  "image": "tunisia.jpeg"
+  },
+  {
+    "name": "Algeria",
+    "population": 43851044,
+    "area": 2381741,
+    "continent": "Africa",
+    "gdp": 16978,
+    "image": "algeria.jpeg"
+  },
+  {
+    "name": "France",
+    "population": 67348000,
+    "area": 551695,
+    "continent": "Europe",
+    "gdp": 42659,
+    "image": "france.jpeg"
+  },
+  {
+    "name": "Andorra",
+    "population": 77265,
+    "area": 468,
+    "continent": "Europe",
+    "gdp": 91527,
+    "image": "andorra.jpeg"
+  },
+  {
+    "name": "Argentina",
+    "population": 45195777,
+    "area": 2780400,
+    "continent": "South America",
+    "gdp": 11683,
+    "image": "argentina.jpeg"
+  },
+  {
+    "name": "Australia",
+    "population": 25499884,
+    "area": 7692024,
+    "continent": "Oceania",
+    "gdp": 54136,
+    "image": "australia.jpeg"
+  },
+  {
+    "name": "Bahamas",
+    "population": 393244,
+    "area": 13943,
+    "continent": "North America",
+    "gdp": 31323,
+    "image": "bahamas.jpeg"
+  },
+  {
+    "name": "Belgium",
+    "population": 11589616,
+    "area": 30528,
+    "continent": "Europe",
+    "gdp": 50349,
+    "image": "belgium.jpeg"
+  },
+  {
+    "name": "Canada",
+    "population": 37742154,
+    "area": 9984670,
+    "continent": "North America",
+    "gdp": 46443,
+    "image": "canada.jpeg"
+  },
+  {
+    "name": "Egypt",
+    "population": 102334404,
+    "area": 1002450,
+    "continent": "Africa",
+    "gdp": 3086,
+    "image": "egypt.jpeg"
+  }
+]
