@@ -180,7 +180,6 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
     this.countries = []; // Clear local data array
     this.dataSource.data = this.countries; // Update MatTableDataSource with empty data
     localStorage.setItem(this.localStorageKey, this.countries.toString());
-    this.dataSource.sort = null;
   }
 
   /**
@@ -192,7 +191,6 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
       this.loadCountries(); // Refresh data after uploading new countries
       this.dataSource.data = this.countries; // Update MatTableDataSource with empty data
     });
-    this.dataSource.sort = null;
   }
   /**
    * Opens a dialog to add a new country.
