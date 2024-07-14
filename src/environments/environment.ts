@@ -1,4 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://intelligent-maison-67768-0720f100588b.herokuapp.com'
+    apiUrlp: 'https://intelligent-maison-67768-0720f100588b.herokuapp.com',
+    apiUrl: 'https://intelligent-maison-67768-0720f100588b.herokuapp.com/'
   };
