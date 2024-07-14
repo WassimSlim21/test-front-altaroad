@@ -12,7 +12,7 @@ export class CountryService {
   private countries: Country[] = [];
   private readonly jsonUrl = '/assets/data/countries.json'; // Path to the JSON file containing countries data
   private readonly localStorageKey = 'countries'; // Key for storing countries data in localStorage
-  private apiUrl = environment.apiUrlp; // API URL fetched from environment configuration
+  private apiUrl = environment.apiUrl; // API URL fetched from environment configuration
 
   constructor(private http: HttpClient) { 
     this.loadCountries(); // Initialize the service by loading countries data from localStorage
@@ -95,7 +95,7 @@ export class CountryService {
     const formData: FormData = new FormData();
     formData.append('file', file); // Append the file to FormData
 
-    const req = new HttpRequest('POST', `${this.apiUrl}/api/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.apiUrl}api/upload`, formData, {
       responseType: 'json'
     });
 

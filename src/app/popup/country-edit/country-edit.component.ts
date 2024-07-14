@@ -54,7 +54,7 @@ export class CountryEditComponent {
    * @returns SafeUrl - Safe URL for the current country image
    */
   getSafeImageUrl(): SafeUrl {
-    const imagePath = `${environment.apiUrl}/uploads/${this.country.image}`;
+    const imagePath = `${environment.apiUrl}uploads/${this.country.image}`;
     return this.sanitizer.bypassSecurityTrustUrl(imagePath);
   }
 

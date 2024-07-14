@@ -52,7 +52,7 @@ export class CountryDetailsComponent implements OnInit {
    */
   getSafeImageUrl(imageUrl: string): SafeUrl {
     // Assuming your images are in assets/images/
-    const imagePath = `${environment.apiUrl}/uploads/${imageUrl}`;
+    const imagePath = `${environment.apiUrl}uploads/${imageUrl}`;
     return this.sanitizer.bypassSecurityTrustUrl(imagePath);
   }
 

@@ -61,7 +61,7 @@ export class CountriesComponent implements AfterViewInit {
    * @returns {SafeUrl} - Sanitized URL that can be used in img src.
    */
   getSafeImageUrl(imageUrl: string): SafeUrl {
-    const imagePath = `${environment.apiUrl}/uploads/${imageUrl}`;
+    const imagePath = `${environment.apiUrl}uploads/${imageUrl}`;
     return this.sanitizer.bypassSecurityTrustUrl(imagePath);
   }
 
