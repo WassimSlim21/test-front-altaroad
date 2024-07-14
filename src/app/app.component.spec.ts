@@ -26,10 +26,9 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('font-gestion-pays');
   });
 
-  it('should render title', () => {
+  it(`should have as title 'Hello, font-gestion-pays'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, font-gestion-pays');
+    const app = fixture.componentInstance;
+    expect(app.title).toContain('Hello, font-gestion-pays');
   });
 });

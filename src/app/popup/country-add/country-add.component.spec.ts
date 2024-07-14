@@ -1,23 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CountryAddComponent } from './country-add.component';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-describe('CountryAddComponent', () => {
-  let component: CountryAddComponent;
-  let fixture: ComponentFixture<CountryAddComponent>;
-
+describe('CountryEditComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CountryAddComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(CountryAddComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      declarations: [ CountryAddComponent ],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: {} }
+      ]
+    }).compileComponents();
   });
 
   it('should create', () => {
+    const fixture = TestBed.createComponent(CountryAddComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });

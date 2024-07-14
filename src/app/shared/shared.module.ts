@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select'; // Material select m
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar'; // Material snack bar module
 import { CountryAddComponent } from '@app/popup/country-add/country-add.component';
 import { CountryEditComponent } from '@app/popup/country-edit/country-edit.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { CountryEditComponent } from '@app/popup/country-edit/country-edit.compo
     CountryEditComponent
   ],
   imports: [
+    LayoutModule,
     CommonModule, // Common module for Angular features
     MatToolbarModule, // Material toolbar module
     MatButtonModule, // Material button module
@@ -39,6 +41,7 @@ import { CountryEditComponent } from '@app/popup/country-edit/country-edit.compo
     FormsModule, // Template-driven forms module
   ],
   exports: [
+    LayoutModule,
     MatToolbarModule, // Export Material toolbar module
     MatButtonModule, // Export Material button module
     MatIconModule, // Export Material icon module
