@@ -9,9 +9,9 @@
     </app-header>
   </div>
 </div>
+<div class="container-fluid">
 
-<div class="body-container">
-  <div class="container-fluid">
+<div class="body-container ">
     <div class="table-container">
       <!-- Table Component -->
       <table mat-table [dataSource]="dataSource" #sort="matSort" matSort>
@@ -101,13 +101,16 @@
 
         <!-- Actions Column -->
         <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef>Actions</th>
-          <td mat-cell *matCellDef="let country">
-            <button mat-icon-button id="edit" (click)="editCountry(country)">
-              <mat-icon>edit</mat-icon>
-            </button>
-          </td>
-        </ng-container>
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let country">
+              <button mat-icon-button id="edit" (click)="editCountry(country)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button id="delete" (click)="deleteCountry(country)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
 
         <!-- Header and Row Declarations -->
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -117,6 +120,7 @@
           (click)="viewDetails(country, $event)"
         ></tr>
       </table>
+    </div>
     </div>
   </div>
 
@@ -135,5 +139,4 @@
         </button>
       </div>
     </div>
-  </div>
 </div>

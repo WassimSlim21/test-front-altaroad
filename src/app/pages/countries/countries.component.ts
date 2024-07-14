@@ -180,6 +180,7 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
     this.countries = []; // Clear local data array
     this.dataSource.data = this.countries; // Update MatTableDataSource with empty data
     localStorage.setItem(this.localStorageKey, this.countries.toString());
+    this.dataSource.sort = null;
   }
 
   /**
@@ -191,6 +192,7 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
       this.loadCountries(); // Refresh data after uploading new countries
       this.dataSource.data = this.countries; // Update MatTableDataSource with empty data
     });
+    this.dataSource.sort = null;
   }
   /**
    * Opens a dialog to add a new country.
@@ -201,7 +203,9 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.countries.push(result);
-        this.snackBar.open("Country " + result.name + " Added successfully!!");
+        this.snackBar.open("Country " + result.name + " Added successfully!!", 'Close', {
+          duration: 3000,
+        });
         this.countryService.saveCountries();
         this.loadCountries();
       }
@@ -224,11 +228,24 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
       if (result) {
         const index = this.countries.findIndex(c => c.name === country.name);
         this.countries[index] = result;
-        this.snackBar.open("Country " + result.name + " Updated successfully!!");
+        this.snackBar.open("Country " + result.name + " Updated successfully!!", 'Close', {
+          duration: 3000,
+        });
         this.countryService.saveCountries();
         this.loadCountries();
       }
     });
+  }
+  deleteCountry(country: Country): void {
+    const index = this.countries.indexOf(country);
+    if (index >= 0) {
+      this.countries.splice(index, 1);
+      this.dataSource.data = this.countries;
+      this.countryService.saveCountries(); // Save updated countries list
+      this.snackBar.open(`Country ${country.name} deleted successfully!`, 'Close', {
+        duration: 3000,
+      });
+    }
   }
 }
 
