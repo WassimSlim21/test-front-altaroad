@@ -17,3 +17,5 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FRONT_COUNTRYMGMT_ALTAROAD }}
           channelId: live
           projectId: front-countrymgmt-altaroad
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks  # Add this line
