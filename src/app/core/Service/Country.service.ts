@@ -79,7 +79,7 @@ export class CountryService {
     const formData: FormData = new FormData();
     formData.append('file', file); // Append the file to FormData
   
-    const req = new HttpRequest('POST', `${this.apiUrl}/api/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.apiUrl}api/upload`, formData, {
       responseType: 'json'
     });
   
