@@ -1,8 +1,9 @@
-import { HttpClient  } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Country } from '@app/core/models/Country ';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class CountryService {
   private countries: Country[] = [];
   private readonly jsonUrl = '/assets/data/countries.json'; // Path to the JSON file containing countries data
   private readonly localStorageKey = 'countries'; // Key for storing countries data in localStorage
+  private apiUrl = environment.apiUrl; // API URL fetched from environment configuration
 
   constructor(private http: HttpClient) { 
     this.loadCountries(); // Initialize the service by loading countries data from localStorage
@@ -66,5 +68,38 @@ export class CountryService {
     return this.countries.find(country => country.name === name);
   }
 
+
+  
+  /**
+   * Updates a country using a file upload.
+   * @param file The File object to upload.
+   * @returns An observable of the HTTP event.
+   */
+  updateCountry(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file); // Append the file to FormData
+  
+    const req = new HttpRequest('POST', `${this.apiUrl}/api/upload`, formData, {
+      responseType: 'json'
+    });
+  
+    return this.http.request(req); // Return the HTTP request observable
+  }
+
+  /**
+   * Adds a new country using a file upload.
+   * @param file The File object to upload.
+   * @returns An observable of the HTTP event.
+   */
+  addCountry(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file); // Append the file to FormData
+
+    const req = new HttpRequest('POST', `${this.apiUrl}/api/upload`, formData, {
+      responseType: 'json'
+    });
+
+    return this.http.request(req); // Return the HTTP request observable
+  }
   
 }

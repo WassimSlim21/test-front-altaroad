@@ -13,11 +13,14 @@ import { MatFormFieldModule } from '@angular/material/form-field'; // Material f
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // Reactive and Template-driven forms modules
 import { MatSelectModule } from '@angular/material/select'; // Material select module
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar'; // Material snack bar module
+import { CountryAddComponent } from '@app/popup/country-add/country-add.component';
+import { CountryEditComponent } from '@app/popup/country-edit/country-edit.component';
 
 
 @NgModule({
   declarations: [
- 
+    CountryAddComponent,
+    CountryEditComponent
   ],
   imports: [
     CommonModule, // Common module for Angular features

@@ -8,6 +8,8 @@ import { Router } from '@angular/router';;
 import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Country } from '@app/core/models/Country ';
+import { CountryAddComponent } from '@app/popup/country-add/country-add.component';
+import { CountryEditComponent } from '@app/popup/country-edit/country-edit.component';
 
 @Component({
   selector: 'app-countries',
@@ -190,22 +192,43 @@ getSortDirection(column: keyof Country): 'asc' | 'desc' {
       this.dataSource.data = this.countries; // Update MatTableDataSource with empty data
     });
   }
-   /**
+  /**
    * Opens a dialog to add a new country.
    * Updates table and local storage after successful addition.
    */
-   addCountry(): void {
-
-   }
+  addCountry(): void {
+    const dialogRef = this.dialog.open(CountryAddComponent, { data: { country: {} } });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.countries.push(result);
+        this.snackBar.open("Country " + result.name + " Added successfully!!");
+        this.countryService.saveCountries();
+        this.loadCountries();
+      }
+    });
+  }
  
-   /**
-    * Opens a dialog to edit an existing country.
-    * Updates table and local storage after successful edit.
-    * 
-    * @param {Country} country - The country object to edit.
-    */
-   editCountry(country: any): void {
- 
-   }
+  /**
+   * Opens a dialog to edit an existing country.
+   * Updates table and local storage after successful edit.
+   * 
+   * @param {Country} country - The country object to edit.
+   */
+  editCountry(country: any): void {
+    const dialogRef = this.dialog.open(CountryEditComponent, {
+      data: { country },
+      width: '600px', // Specify a custom width
+      height: 'auto' // You can also specify a custom height if needed
+    });
+        dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const index = this.countries.findIndex(c => c.name === country.name);
+        this.countries[index] = result;
+        this.snackBar.open("Country " + result.name + " Updated successfully!!");
+        this.countryService.saveCountries();
+        this.loadCountries();
+      }
+    });
+  }
 }
 

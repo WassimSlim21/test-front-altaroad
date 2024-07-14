@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>Add New Country</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="countryForm">
+    <!-- Name Input -->
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" formControlName="name" required>
+    </div>
+
+    <!-- Population Input -->
+    <div class="form-group">
+      <label>Population</label>
+      <input class="form-control" type="number" formControlName="population" required>
+    </div>
+
+    <!-- Area Input -->
+    <div class="form-group">
+      <label>Area</label>
+      <input class="form-control" type="number" formControlName="area" required>
+    </div>
+
+    <!-- Continent Dropdown -->
+    <div class="form-group">
+      <label>Continent</label>
+      <select class="form-control" formControlName="continent">
+        <option *ngFor="let continent of continents" [value]="continent">
+          {{ continent }}
+        </option>
+      </select>
+    </div>
+
+    <!-- GDP Input -->
+    <div class="form-group">
+      <label>GDP</label>
+      <input class="form-control" type="number" formControlName="gdp" required>
+    </div>
+
+    <!-- Upload Image Input -->
+    <div class="form-group">
+      <label>Upload Image</label>
+      <input type="file" (change)="onFileSelected($event)" class="form-control-file">
+    </div>
+
+    <!-- Image Preview -->
+    <div *ngIf="imagePreview">
+      <img [src]="imagePreview" alt="Image Preview" width="200">
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <!-- Cancel Button -->
+  <button mat-button (click)="onCancel()">Cancel</button>
+  
+  <!-- Save Button -->
+  <button mat-button (click)="onSave()" [disabled]="!countryForm.valid">Save</button>
+</div>

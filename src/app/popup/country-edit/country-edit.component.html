@@ -1,0 +1,59 @@
+<div class="modal-header">
+  <h5 class="modal-title">Edit Country</h5>
+  <button type="button" class="close" aria-label="Close" (click)="closeDialog()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="countryForm" (ngSubmit)="save()">
+    <!-- Name Input -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" required>
+    </div>
+
+    <!-- Population Input -->
+    <div class="form-group">
+      <label for="population">Population</label>
+      <input type="number" class="form-control" id="population" formControlName="population" required>
+    </div>
+
+    <!-- Area Input -->
+    <div class="form-group">
+      <label for="area">Area</label>
+      <input type="number" class="form-control" id="area" formControlName="area" required>
+    </div>
+
+    <!-- Continent Select -->
+    <div class="form-group">
+      <label for="continent">Continent</label>
+      <select class="form-control" id="continent" formControlName="continent" required>
+        <option *ngFor="let continent of continents" [value]="continent">{{ continent }}</option>
+      </select>
+    </div>
+
+    <!-- GDP Input -->
+    <div class="form-group">
+      <label for="gdp">GDP</label>
+      <input type="number" class="form-control" id="gdp" formControlName="gdp" required>
+    </div>
+
+    <!-- Current Image Display -->
+    <div class="form-group">
+      <label for="image">Current Image</label>
+      <img *ngIf="countryForm.get('image')" [src]="getSafeImageUrl()" alt="Current Image" width="200">
+    </div>
+
+    <!-- New Image Selection -->
+    <div class="form-group">
+      <label for="newImage">New Image</label>
+      <input type="file" class="form-control-file" id="newImage" (change)="onFileSelected($event)">
+      <div *ngIf="imagePreview">
+        <img [src]="imagePreview" alt="Image Preview" width="200">
+      </div>
+    </div>
+
+    <!-- Save Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="!countryForm.valid">Save</button>
+  </form>
+</div>
