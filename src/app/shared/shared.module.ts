@@ -16,10 +16,12 @@ import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/mater
 import { CountryAddComponent } from '@app/popup/country-add/country-add.component';
 import { CountryEditComponent } from '@app/popup/country-edit/country-edit.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HeaderComponent } from '@app/layout/header/header.component';
 
 
 @NgModule({
   declarations: [
+    HeaderComponent,
     CountryAddComponent,
     CountryEditComponent
   ],
@@ -41,6 +43,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     FormsModule, // Template-driven forms module
   ],
   exports: [
+    HeaderComponent,
     LayoutModule,
     MatToolbarModule, // Export Material toolbar module
     MatButtonModule, // Export Material button module

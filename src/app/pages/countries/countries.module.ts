@@ -9,8 +9,7 @@ import { HeaderComponent } from '@app/layout/header/header.component';
 
 @NgModule({
   declarations: [
-    CountriesComponent, // Declaring the main component of the module
-    HeaderComponent
+    CountriesComponent // Declaring the main component of the module
   ],
   imports: [
     LayoutModule,

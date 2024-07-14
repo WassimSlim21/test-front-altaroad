@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CountryEditComponent } from './country-edit.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CountryEditComponent', () => {
   beforeEach(async () => {
@@ -18,4 +19,12 @@ describe('CountryEditComponent', () => {
     const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
+});
+
+beforeEach(() => {
+  TestBed.configureTestingModule({
+    declarations: [ CountryEditComponent ],
+    imports: [ HttpClientModule ] // Add this
+  })
+  .compileComponents();
 });

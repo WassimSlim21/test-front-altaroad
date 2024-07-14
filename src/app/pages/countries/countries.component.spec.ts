@@ -1,16 +1,15 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { CountriesComponent } from './countries.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { CountryService } from '../../core/Service/Country.service';
+import { SharedModule } from '@app/shared/shared.module';
 
 describe('CountriesComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CountriesComponent ],
-      imports: [ HttpClientTestingModule ],
-      providers: [ CountryService ]
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [CountriesComponent],
+      imports: [HttpClientModule, SharedModule]
     }).compileComponents();
-  });
+  }));
 
   it('should create', () => {
     const fixture = TestBed.createComponent(CountriesComponent);
