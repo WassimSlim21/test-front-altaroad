@@ -24,7 +24,7 @@ describe('CountryDetailsComponent', () => {
 beforeEach(() => {
   TestBed.configureTestingModule({
     declarations: [ CountryDetailsComponent ],
-    imports: [ HttpClientModule ] // Add this
+    imports: [ HttpClientModule ]
   })
   .compileComponents();
 });
